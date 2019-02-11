@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import HomeLayout from '../components/home-layout'
 import Categories from '../../categories/components/categories'
 import Related from '../../pages/components/related'
-import ModalContainer from '../../widgets/container/modal-container'
+import ModalContainer from '../../widgets/containers/modal-container'
 import Modal from '../../widgets/components/modal'
 import HandleError from '../../errors/containers/handle-error'
 
