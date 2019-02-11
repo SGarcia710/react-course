@@ -4,7 +4,7 @@ import './modal.css'
 function Modal(props) {
   return(
     <div className="Modal">
-      esto es un modal trabajado en windows
+      esto es un modal trabajado en mac
       {props.children}
       <button onClick={props.handleClick}>Cerrar</button>
     </div>
