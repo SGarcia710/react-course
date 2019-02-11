@@ -6,6 +6,7 @@ function Modal(props) {
     <div className="Modal">
       A dios le pido
       que si me muero sea de amor
+      que si me enamoro se a de voz
       {props.children}
       <button onClick={props.handleClick}>Cerrar</button>
     </div>
