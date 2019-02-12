@@ -10,7 +10,7 @@ class Video extends Component{
     }
   }
   componentWillReceiveProps(nextProps) {
-    if (nextProps.pause !== this.props.pause) {
+    if (nextProps.pause !== this.props.pause) { //En este momento el this.props tiene false, es decir que es diferente de nextProps.
       this.togglePlay();
     }
   }
@@ -21,6 +21,8 @@ class Video extends Component{
     const {
       handleLoadedMetadata,
       handleTimeUpdate,
+      handleSeeking,
+      handleSeeked,
     } = this.props;
 
     return(
@@ -29,8 +31,10 @@ class Video extends Component{
           ref={this.setRef}
           autoPlay={this.props.autoplay}
           src={this.props.src}
-          onLoadedMetadata={handleLoadedMetadata}
-          onTimeUpdate={handleTimeUpdate}
+          onLoadedMetadata={handleLoadedMetadata}//duracion
+          onTimeUpdate={handleTimeUpdate}//currenTime
+          onSeeking={handleSeeking} //me estoy moviendo
+          onSeeked={handleSeeked} //ya me movi
         />
       </div>
     )
