@@ -7,7 +7,11 @@ import Timer from '../components/timer';
 import Controls from '../components/video-player-controls';
 import ProgressBar from '../components/progress-bar';
 import Spinner from '../components/spinner';
+import Volume from '../components/volume';
+
+
 import { formatedTime } from '../../helper';
+import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 
 class VideoPlayer extends Component {
   state = {
@@ -17,6 +21,7 @@ class VideoPlayer extends Component {
     progressBarDuration: 0,
     progressBarCurrentTime: 0,
     loading: false,
+    mute: false
   }
   togglePlay = (event) => {
     this.setState({
@@ -55,6 +60,24 @@ class VideoPlayer extends Component {
       loading: false
     })
   }
+  handleVolumeChange = event => {
+    this.video.volume = event.target.value
+    this.lastVolume = event.target.value
+    console.log(this.video.volume)
+  }
+  toggleVolume = event => {//Solo pone el mute siempre y cuando no se haya tocado el input.
+    if (!this.state.mute && this.lastVolume===undefined){
+      this.video.volume = 0
+      this.setState({
+        mute: true
+      })
+    }else{
+      this.setState({
+        mute: false
+      })
+      this.video.volume = 1
+    }
+  }
   render() {
     return (
       <VideoPlayerLayout>
@@ -75,6 +98,10 @@ class VideoPlayer extends Component {
             progressBarCurrentTime={this.state.progressBarCurrentTime}
             handleProgressChange={this.handleProgressChange}
           />
+          <Volume 
+            handleVolumeClick={this.toggleVolume}
+            handleVolumeChange={this.handleVolumeChange}
+          />
         </Controls>
         <Spinner 
           active={this.state.loading}
@@ -86,6 +113,7 @@ class VideoPlayer extends Component {
           handleTimeUpdate={this.handleTimeUpdate}
           autoplay={!this.props.autoplay}//Aca desactivo el autoplay.
           pause={!this.state.pause}//El video llega pausado
+          mute={this.state.mute}//mando el video sin mute
           src="http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4"
         />
       </VideoPlayerLayout>
