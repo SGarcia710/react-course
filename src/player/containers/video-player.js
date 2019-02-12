@@ -6,7 +6,7 @@ import PlayPause from '../components/play-pause'
 
 class VideoPlayer extends Component {
   state = {
-    pause: true,
+    pause: false,
   }
   togglePlay = (event) => {
     this.setState({
