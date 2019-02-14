@@ -18,13 +18,15 @@ class Media extends PureComponent {
   //   author: 'Pedrito'
   // }
 
-  // handleClick = (event) => {//Con ECMAScript 7, con el arrow function directamente la funcion hereda el contexto de su padre
+  handleClick = (media) => {//Con ECMAScript 7, con el arrow function directamente la funcion hereda el contexto de su padre
     // console.log(this.props.image)
     // this.setState({//Asi cambio un estado
     //   author: 'Leonidas Esteban',
     // })
+    this.props.openModal(this.props);//envio todas las propiedades de mi media
+    console.log(this.props.src)
 
-  // }
+  }
 
   render() {
     const styles = {
@@ -37,7 +39,7 @@ class Media extends PureComponent {
     //Las propiedades no pueden cambiar porque son inmutables, sin embargo los estados si, ellos son mutables. Asi podemos hacer 
     //webs dinamicas.
     return (//JSX sintaxis para construir elementos dentro de JS. Funciona como HTML
-      <div className="Media" onClick={this.props.handleClick}>
+      <div className="Media" onClick={this.handleClick}>
         <div className="Media-cover">
           <img
             className="Media-image"

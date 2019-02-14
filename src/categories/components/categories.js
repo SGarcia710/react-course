@@ -4,10 +4,12 @@ import './categories.css'
 import SearchContainer from '../../widgets/containers/search-container'
 
 function Categories(props) {
+  // console.log(props.categories);
   return(
     <div className="Categories">
     <SearchContainer />
     {
+      
       props.categories.map((item)=>{
         return (
           <Category 

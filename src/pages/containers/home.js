@@ -16,34 +16,38 @@ class Home extends Component {
       modalVisible: false,
     })
   }
-  handleOpenModal = () => {
+  handleOpenModal = (media) => {
     this.setState({
       modalVisible: true,
+      media //si el valor de la key se llama igual, solo lo pongo una vez. Sugar syntax baby
     })
+    // console.log(this.state.media.src)
   }
   render() {
-    return(
+    return (
       <HandleError>
-       <HomeLayout>
-        <Related/>
-        <VideoPlayer 
-          autoplay={true}
-        />
-        <Categories 
-        categories={this.props.data.categories}
-        handleOpenModal={this.handleOpenModal}
-        />
-        {
-          this.state.modalVisible &&
-          <ModalContainer>
-            <Modal
-              handleClick={this.handleCloseModal}
-            >
-              <h1>Esto es un Portal</h1>
-            </Modal>
-          </ModalContainer>
-        }
-      </HomeLayout>
+        <HomeLayout>
+          <Related />
+          <Categories
+            categories={this.props.data.categories}
+            handleOpenModal={this.handleOpenModal}
+          />
+          {
+            this.state.modalVisible &&
+            <ModalContainer>
+              <Modal
+                handleClick={this.handleCloseModal}
+              >
+                <VideoPlayer
+                  autoplay={false}
+                  src={this.state.media.src}
+                  title={this.state.media.title}
+                />
+                <h1>Esto es un Portal</h1>
+              </Modal>
+            </ModalContainer>
+          }
+        </HomeLayout>
       </HandleError>
     )
   }

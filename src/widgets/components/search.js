@@ -7,6 +7,8 @@ import './search.css'
 //   )
 // }
 
+// onChange={props.handleChange}
+// value={props.value}
 const Search = (props) => (
   <form 
     className="Search"
@@ -18,8 +20,6 @@ const Search = (props) => (
     placeholder="Buscar" 
     className="Search-input" 
     name="search"
-    onChange={props.handleChange}
-    value={props.value}
     />
   </form>
 )

@@ -7,7 +7,7 @@ class SearchContainer extends Component {
   }
   handleSubmit = event => {
     event.preventDefault();
-    console.log(this.input.value, 'Submit')
+    // console.log(this.input.value, 'Submit')
   }
   setInputRef = element => {
     this.input = element;
@@ -17,13 +17,13 @@ class SearchContainer extends Component {
       value: event.target.value.replace(' ', '-')
     })
   }
+  // handleChange={this.handleInputChange}
+  // value={this.state.value}
   render() {
     return (
       <Search 
         setRef = {this.setInputRef}
         handleSubmit={this.handleSubmit}
-        handleChange={this.handleInputChange}
-        value={this.state.value}
       />
     )
   }

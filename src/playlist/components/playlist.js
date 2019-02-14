@@ -22,7 +22,7 @@ function Playlist(props) {
         props.playlist.map((item) => {
           //recordar que a la hora de mapear elementos en el DOM, necesitamos poner un key unico que no se repita.
           // return <Media title={item.title} key={item.id} author={item.author} type={item.type} image={item.cover} src={item.src}/> ES6
-          return <Media handleClick={props.handleOpenModal} {...item} key={item.id} /> //ES7
+          return <Media openModal={props.handleOpenModal} {...item} key={item.id} /> //ES7
         })
       }
     </div>

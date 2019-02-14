@@ -65,7 +65,7 @@ class VideoPlayer extends Component {
     this.volActual = event.target.value
     console.log(this.video.volume)
   }
-  toggleVolume = event => {//Solo pone el mute siempre y cuando no se haya tocado el input.
+  toggleVolume = event => {
     // this.volActual = this.volActual ? this.volActual : this.video.volume
     if (!this.state.mute){
       this.video.volume = 0
@@ -96,11 +96,11 @@ class VideoPlayer extends Component {
       setRef={this.setRef}
       >
         <Title
-          title="Esto es un Video chido!"
+          title={this.props.title}
         />
         <Controls>
           <PlayPause
-            pause={!this.state.pause}//El playPause llega pausado.
+            pause={this.state.pause}//El playPause llega mostrando pausado.
             handleClick={this.togglePlay}
           />
           <Timer
@@ -127,10 +127,10 @@ class VideoPlayer extends Component {
           handleSeeked={this.handleSeeked}
           handleLoadedMetadata={this.handleLoadedMetadata}
           handleTimeUpdate={this.handleTimeUpdate}
-          autoplay={!this.props.autoplay}//Aca desactivo el autoplay.
-          pause={!this.state.pause}//El video llega pausado
-          mute={this.state.mute}//mando el video sin mute
-          src="http://download.blender.org/peach/bigbuckbunny_movies/BigBuckBunny_320x180.mp4"
+          autoplay={this.props.autoplay}
+          pause={this.state.pause} //el video llega pues, pausado
+          mute={this.state.mute}
+          src={this.props.src}
         />
       </VideoPlayerLayout>
     )
