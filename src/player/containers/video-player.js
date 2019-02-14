@@ -62,11 +62,12 @@ class VideoPlayer extends Component {
   }
   handleVolumeChange = event => {
     this.video.volume = event.target.value
-    this.lastVolume = event.target.value
+    this.volActual = event.target.value
     console.log(this.video.volume)
   }
   toggleVolume = event => {//Solo pone el mute siempre y cuando no se haya tocado el input.
-    if (!this.state.mute && this.lastVolume===undefined){
+    // this.volActual = this.volActual ? this.volActual : this.video.volume
+    if (!this.state.mute){
       this.video.volume = 0
       this.setState({
         mute: true
